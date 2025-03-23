@@ -1,8 +1,8 @@
 namespace Db_Migration
 {
-    public partial class Form1 : Form
+    public partial class DbMigration : Form
     {
-        public Form1()
+        public DbMigration()
         {
             InitializeComponent();
         }
