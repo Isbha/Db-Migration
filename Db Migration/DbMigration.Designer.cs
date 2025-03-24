@@ -28,84 +28,80 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             groupBox1 = new GroupBox();
-            lblOldDb = new Label();
             txtBoxOldDb = new TextBox();
+            lblOldDb = new Label();
+            groupBox2 = new GroupBox();
+            chckAddOnDocuments = new CheckBox();
+            chckGuestDocuments = new CheckBox();
+            BtnMigration = new Button();
+            progressBarMigration = new ProgressBar();
+            errorProvider1 = new ErrorProvider(components);
+            lblStatus = new Label();
+            sqlCommand1 = new Microsoft.Data.SqlClient.SqlCommand();
             txtBoxNewDb = new TextBox();
             lblNewDb = new Label();
-            groupBox2 = new GroupBox();
-            chckGuestDocuments = new CheckBox();
-            chckAddOnDocuments = new CheckBox();
-            button1 = new Button();
             groupBox1.SuspendLayout();
             groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)errorProvider1).BeginInit();
             SuspendLayout();
             // 
             // groupBox1
             // 
-            groupBox1.Controls.Add(txtBoxNewDb);
-            groupBox1.Controls.Add(lblNewDb);
             groupBox1.Controls.Add(txtBoxOldDb);
             groupBox1.Controls.Add(lblOldDb);
             groupBox1.Font = new Font("Segoe UI", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            groupBox1.Location = new Point(46, 62);
+            groupBox1.Location = new Point(46, 27);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(1418, 226);
+            groupBox1.Size = new Size(1021, 282);
             groupBox1.TabIndex = 0;
             groupBox1.TabStop = false;
             groupBox1.Text = "Database Connections";
+            // 
+            // txtBoxOldDb
+            // 
+            txtBoxOldDb.Location = new Point(231, 47);
+            txtBoxOldDb.Multiline = true;
+            txtBoxOldDb.Name = "txtBoxOldDb";
+            txtBoxOldDb.Size = new Size(748, 94);
+            txtBoxOldDb.TabIndex = 1;
+            txtBoxOldDb.TextChanged += textBox1_TextChanged;
             // 
             // lblOldDb
             // 
             lblOldDb.AutoSize = true;
             lblOldDb.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lblOldDb.Location = new Point(32, 54);
+            lblOldDb.Location = new Point(32, 50);
             lblOldDb.Name = "lblOldDb";
             lblOldDb.Size = new Size(182, 20);
             lblOldDb.TabIndex = 0;
             lblOldDb.Text = "Old Db Connection String:";
             lblOldDb.Click += label1_Click;
             // 
-            // txtBoxOldDb
-            // 
-            txtBoxOldDb.Location = new Point(231, 54);
-            txtBoxOldDb.Multiline = true;
-            txtBoxOldDb.Name = "txtBoxOldDb";
-            txtBoxOldDb.Size = new Size(449, 125);
-            txtBoxOldDb.TabIndex = 1;
-            txtBoxOldDb.TextChanged += textBox1_TextChanged;
-            // 
-            // txtBoxNewDb
-            // 
-            txtBoxNewDb.Location = new Point(924, 55);
-            txtBoxNewDb.Multiline = true;
-            txtBoxNewDb.Name = "txtBoxNewDb";
-            txtBoxNewDb.Size = new Size(470, 124);
-            txtBoxNewDb.TabIndex = 3;
-            // 
-            // lblNewDb
-            // 
-            lblNewDb.AutoSize = true;
-            lblNewDb.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lblNewDb.Location = new Point(711, 55);
-            lblNewDb.Name = "lblNewDb";
-            lblNewDb.Size = new Size(188, 20);
-            lblNewDb.TabIndex = 2;
-            lblNewDb.Text = "New Db Connection String:";
-            lblNewDb.Click += label2_Click;
-            // 
             // groupBox2
             // 
             groupBox2.Controls.Add(chckAddOnDocuments);
             groupBox2.Controls.Add(chckGuestDocuments);
             groupBox2.Font = new Font("Segoe UI", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            groupBox2.Location = new Point(46, 315);
+            groupBox2.Location = new Point(46, 319);
             groupBox2.Name = "groupBox2";
-            groupBox2.Size = new Size(1418, 125);
+            groupBox2.Size = new Size(534, 125);
             groupBox2.TabIndex = 1;
             groupBox2.TabStop = false;
             groupBox2.Text = "Tables to Migrate";
             groupBox2.Enter += groupBox2_Enter;
+            // 
+            // chckAddOnDocuments
+            // 
+            chckAddOnDocuments.AutoSize = true;
+            chckAddOnDocuments.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            chckAddOnDocuments.Location = new Point(238, 58);
+            chckAddOnDocuments.Name = "chckAddOnDocuments";
+            chckAddOnDocuments.Size = new Size(157, 24);
+            chckAddOnDocuments.TabIndex = 1;
+            chckAddOnDocuments.Text = "AddOn Documents";
+            chckAddOnDocuments.UseVisualStyleBackColor = true;
             // 
             // chckGuestDocuments
             // 
@@ -119,34 +115,71 @@
             chckGuestDocuments.UseVisualStyleBackColor = true;
             chckGuestDocuments.CheckedChanged += checkBox2_CheckedChanged;
             // 
-            // chckAddOnDocuments
+            // BtnMigration
             // 
-            chckAddOnDocuments.AutoSize = true;
-            chckAddOnDocuments.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            chckAddOnDocuments.Location = new Point(238, 58);
-            chckAddOnDocuments.Name = "chckAddOnDocuments";
-            chckAddOnDocuments.Size = new Size(157, 24);
-            chckAddOnDocuments.TabIndex = 1;
-            chckAddOnDocuments.Text = "AddOn Documents";
-            chckAddOnDocuments.UseVisualStyleBackColor = true;
+            BtnMigration.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            BtnMigration.Location = new Point(851, 361);
+            BtnMigration.Name = "BtnMigration";
+            BtnMigration.Size = new Size(216, 51);
+            BtnMigration.TabIndex = 2;
+            BtnMigration.Text = "Start Migration";
+            BtnMigration.UseVisualStyleBackColor = true;
+            BtnMigration.Click += button1_Click;
             // 
-            // button1
+            // progressBarMigration
             // 
-            button1.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            button1.Location = new Point(697, 476);
-            button1.Name = "button1";
-            button1.Size = new Size(115, 39);
-            button1.TabIndex = 2;
-            button1.Text = "Start Migration";
-            button1.UseVisualStyleBackColor = true;
-            button1.Click += button1_Click;
+            progressBarMigration.Location = new Point(46, 528);
+            progressBarMigration.Name = "progressBarMigration";
+            progressBarMigration.Size = new Size(1021, 38);
+            progressBarMigration.TabIndex = 3;
+            // 
+            // errorProvider1
+            // 
+            errorProvider1.ContainerControl = this;
+            // 
+            // lblStatus
+            // 
+            lblStatus.AutoSize = true;
+            lblStatus.Location = new Point(406, 481);
+            lblStatus.Name = "lblStatus";
+            lblStatus.Size = new Size(52, 20);
+            lblStatus.TabIndex = 4;
+            lblStatus.Text = "Status:";
+            lblStatus.Click += label1_Click_2;
+            // 
+            // sqlCommand1
+            // 
+            sqlCommand1.CommandTimeout = 30;
+            sqlCommand1.EnableOptimizedParameterBinding = false;
+            // 
+            // txtBoxNewDb
+            // 
+            txtBoxNewDb.Location = new Point(277, 196);
+            txtBoxNewDb.Multiline = true;
+            txtBoxNewDb.Name = "txtBoxNewDb";
+            txtBoxNewDb.Size = new Size(748, 93);
+            txtBoxNewDb.TabIndex = 5;
+            // 
+            // lblNewDb
+            // 
+            lblNewDb.AutoSize = true;
+            lblNewDb.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lblNewDb.Location = new Point(69, 196);
+            lblNewDb.Name = "lblNewDb";
+            lblNewDb.Size = new Size(188, 20);
+            lblNewDb.TabIndex = 4;
+            lblNewDb.Text = "New Db Connection String:";
             // 
             // DbMigration
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1514, 676);
-            Controls.Add(button1);
+            Controls.Add(txtBoxNewDb);
+            Controls.Add(lblNewDb);
+            Controls.Add(lblStatus);
+            Controls.Add(progressBarMigration);
+            Controls.Add(BtnMigration);
             Controls.Add(groupBox2);
             Controls.Add(groupBox1);
             Name = "DbMigration";
@@ -155,7 +188,9 @@
             groupBox1.PerformLayout();
             groupBox2.ResumeLayout(false);
             groupBox2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)errorProvider1).EndInit();
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -168,6 +203,10 @@
         private GroupBox groupBox2;
         private CheckBox chckGuestDocuments;
         private CheckBox chckAddOnDocuments;
-        private Button button1;
+        private Button BtnMigration;
+        private ProgressBar progressBarMigration;
+        private ErrorProvider errorProvider1;
+        private Label lblStatus;
+        private Microsoft.Data.SqlClient.SqlCommand sqlCommand1;
     }
 }
